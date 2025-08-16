@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYILFRE Scripter Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: {
+                            100: '#e6e9f0',
+                            200: '#b8c1d9',
+                            300: '#8a99c2',
+                            400: '#5c71ab',
+                            500: '#2e4994',
+                            600: '#253a76',
+                            700: '#1c2b58',
+                            800: '#131d3b',
+                            900: '#0a0e1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #5c71ab;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active::after {
+            width: 100%;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-midnight-900 text-gray-100 min-h-screen font-sans">
+    <!-- Navigation -->
+    <nav class="bg-midnight-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fas fa-code text-midnight-300 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-midnight-200">SYILFRE</span>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-midnight-200 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-midnight-200 hover:text-white px-3 py-2 text-sm font-semibold" data-section="home">Home</a>
+                    <a href="#" class="nav-link text-midnight-200 hover:text-white px-3 py-2 text-sm font-semibold" data-section="about">About</a>
+                    <a href="#" class="nav-link text-midnight-200 hover:text-white px-3 py-2 text-sm font-semibold" data-section="store">Store</a>
+                    <a href="#" class="nav-link text-midnight-200 hover:text-white px-3 py-2 text-sm font-semibold" data-section="commission">Commission Guide</a>
+                    <a href="#" class="nav-link text-midnight-200 hover:text-white px-3 py-2 text-sm font-semibold" data-section="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-midnight-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="nav-link block px-3 py-2 text-base font-medium text-midnight-200 hover:text-white hover:bg-midnight-600" data-section="home">Home</a>
+                <a href="#" class="nav-link block px-3 py-2 text-base font-medium text-midnight-200 hover:text-white hover:bg-midnight-600" data-section="about">About</a>
+                <a href="#" class="nav-link block px-3 py-2 text-base font-medium text-midnight-200 hover:text-white hover:bg-midnight-600" data-section="store">Store</a>
+                <a href="#" class="nav-link block px-3 py-2 text-base font-medium text-midnight-200 hover:text-white hover:bg-midnight-600" data-section="commission">Commission Guide</a>
+                <a href="#" class="nav-link block px-3 py-2 text-base font-medium text-midnight-200 hover:text-white hover:bg-midnight-600" data-section="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="bg-midnight-700 border-l-4 border-midnight-400 p-4 mb-8">
+                <p class="text-midnight-200 font-medium text-center">⚠️ Please Read Commission Guide Before Hiring! ⚠️</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-midnight-200 mb-4">Professional <span class="text-midnight-400">Roblox</span> Scripter</h1>
+                    <p class="text-lg text-midnight-300 mb-6">Creating immersive experiences through clean, efficient, and powerful Lua scripting for 3+ years.</p>
+                    <p class="text-sm text-midnight-400 mb-6 italic">By hiring me, you agree to the terms outlined in the Commission Guide.</p>
+                    <div class="flex space-x-4">
+                        <a href="#featured-work" class="bg-midnight-600 hover:bg-midnight-500 text-white px-6 py-3 rounded-lg font-medium transition duration-300">View My Work</a>
+                        <a href="#" class="border border-midnight-400 hover:bg-midnight-700 text-midnight-200 px-6 py-3 rounded-lg font-medium transition duration-300" data-section="contact">Hire Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 bg-midnight-700 rounded-full opacity-70"></div>
+                        <div class="absolute inset-4 bg-midnight-600 rounded-full opacity-80"></div>
+                        <div class="absolute inset-8 bg-midnight-500 rounded-full flex items-center justify-center overflow-hidden">
+                            <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-FE29E9936ABD33FBB577C5F50D6FB8B0-Png/420/420/AvatarHeadshot/Webp/noFilter" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Work Section -->
+            <div id="featured-work" class="mt-20">
+                <h2 class="text-5xl font-bold text-midnight-200 mb-4 text-center"><span id="counter">0</span> Million+ Contributed Visits</h2>
+                <h3 class="text-3xl font-bold text-midnight-300 mb-8 text-center">Featured Work</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="project-card bg-midnight-800 rounded-lg p-6 shadow-lg">
+                        <div class="h-40 bg-midnight-700 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                            <img src="https://tr.rbxcdn.com/180DAY-befe9c955a2a0ce033a9b1280d01abee/150/150/Image/Jpeg/noFilter" alt="Bigfoot" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-semibold text-midnight-200 mb-2">Bigfoot</h3>
+                        <p class="text-midnight-400 mb-4">Run, hide, survive — Bigfoot is coming.</p>
+                        <a href="#" class="text-midnight-400 hover:text-midnight-300 font-medium inline-flex items-center" data-section="project-adventure">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="project-card bg-midnight-800 rounded-lg p-6 shadow-lg">
+                        <div class="h-40 bg-midnight-700 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                            <img src="https://tr.rbxcdn.com/180DAY-b7681c5889dca3c486908e989adfedb1/150/150/Image/Jpeg/noFilter" alt="OutWest Chicago" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-semibold text-midnight-200 mb-2">OutWest Chicago</h3>
+                        <p class="text-midnight-400 mb-4">Roleplay hood game</p>
+                        <a href="#" class="text-midnight-400 hover:text-midnight-300 font-medium inline-flex items-center" data-section="project-ecommerce">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="project-card bg-midnight-800 rounded-lg p-6 shadow-lg">
+                        <div class="h-40 bg-midnight-700 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                            <img src="https://tr.rbxcdn.com/180DAY-533a3cbfd4eccbcd779658564fce4bdc/150/150/Image/Webp/noFilter" alt="Don't Explode!" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-semibold text-midnight-200 mb-2">Don't Explode!</h3>
+                        <p class="text-midnight-400 mb-4">Welcome to 💥Don't Explode! [2 Player Obby]  ⚠️ Tag along a friend, this game is meant for 2 players!  ⚠️</p>
+                        <a href="#" class="text-midnight-400 hover:text-midnight-300 font-medium inline-flex items-center" data-section="project-social">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="project-card bg-midnight-800 rounded-lg p-6 shadow-lg">
+                        <div class="h-40 bg-midnight-700 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                            <img src="https://tr.rbxcdn.com/180DAY-bfadec15969131a3c1c434f729ab01b8/150/150/Image/Webp/noFilter" alt="Avatar Outfit Ideas" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-semibold text-midnight-200 mb-2">Avatar Outfit Ideas</h3>
+                        <p class="text-midnight-400 mb-4">♱ Explore hundreds of outfit ideas! ♱ Win FREE UGC accessories! ♱ Advertise your own items! ♱ Vibe with your friends!</p>
+                        <a href="#" class="text-midnight-400 hover:text-midnight-300 font-medium inline-flex items-center" data-section="project-ai">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section py-12">
+            <h2 class="text-3xl font-bold text-midnight-200 mb-8 text-center">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-48 h-48 rounded-full bg-midnight-700 border-4 border-midnight-500 overflow-hidden shadow-lg">
+                        <img src="https://tr.rbxcdn.com/30DAY-Avatar-FE29E9936ABD33FBB577C5F50D6FB8B0-Png/352/352/Avatar/Webp/noFilter" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold text-midnight-300 mb-4">My Journey as a Roblox Developer</h3>
+                    <p class="text-midnight-300 mb-4">💻 Roblox Scripter | 3+ Years Experience | Fullstack</p>
+                    <p class="text-midnight-300 mb-6">I’m a Roblox scripter who builds efficient, modular systems for games — from inventory and UI logic to datastores, visual effects, and gameplay loops. I work with clients to turn ideas into reliable, scalable code that just works.</p>
+                    
+                    <h4 class="text-xl font-semibold text-midnight-300 mb-3">Skills & Expertise</h4>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">Lua</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">Roblox Studio</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">Game Systems</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">UI Development</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">Advanced Datastores</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">Optimization</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">OOP</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">External APIs</span>
+                        <span class="bg-midnight-700 text-midnight-200 px-3 py-1 rounded-full text-sm">Public Libraries & Tools</span>
+                    </div>
+                    
+                    <a href="#" class="inline-flex items-center text-midnight-400 hover:text-midnight-300 font-medium" data-section="contact">
+                        Let's work together
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Studios Section -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold text-midnight-300 mb-8 text-center">Studios I've Worked With</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Studio 1 -->
+                    <div class="bg-midnight-700 rounded-lg overflow-hidden flex">
+                        <div class="w-1/3 aspect-square flex items-center justify-center bg-midnight-800">
+                            <img src="https://tr.rbxcdn.com/180DAY-3537105d5577f5349df728916f898630/150/150/Image/Webp/noFilter" alt="Matterhorn Studios" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h4 class="text-xl font-bold text-midnight-200 mb-1">Matterhorn Studios & Development</h4>
+                            <p class="text-midnight-400 font-medium mb-2">29.7M+ Visits | Scripter | 30,435 Members</p>
+                            <p class="text-midnight-300 text-sm">Has a notable game; called Bigfoot</p>
+                        </div>
+                    </div>
+                                         <!-- Studio 5 -->
+                       <div class="bg-midnight-700 rounded-lg overflow-hidden flex">
+                        <div class="w-1/3 aspect-square flex items-center justify-center bg-midnight-800">
+                            <img src="https://tr.rbxcdn.com/180DAY-d494ac54059029d5c367af0af404172d/150/150/Image/Webp/noFilter" alt="Big Floppa Studioz" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h4 class="text-xl font-bold text-midnight-200 mb-1">big floppa studioz</h4>
+                            <p class="text-midnight-400 font-medium mb-2">853.9K+ Visits | Scripter | 21,417 Members</p>
+                            <p class="text-midnight-300 text-sm">Known for their game "live in the alley simulator" and niche ideas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Studio 2 -->
+                    <div class="bg-midnight-700 rounded-lg overflow-hidden flex">
+                        <div class="w-1/3 aspect-square flex items-center justify-center bg-midnight-800">
+                            <img src="https://tr.rbxcdn.com/180DAY-b7737c537aa8619a8898898c41936fe5/150/150/Image/Webp/noFilter" alt="Outwest Chicago" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h4 class="text-xl font-bold text-midnight-200 mb-1">Outwest Chicago</h4>
+                            <p class="text-midnight-400 font-medium mb-2">5.3M+ Visits | Scripter</p>
+                            <p class="text-midnight-300 text-sm">Focuses on Dahood type of games.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Studio 3 -->
+                    <div class="bg-midnight-700 rounded-lg overflow-hidden flex">
+                        <div class="w-1/3 aspect-square flex items-center justify-center bg-midnight-800">
+                            <img src="https://tr.rbxcdn.com/180DAY-34fafea8bfac1099772a224ebd548a37/150/150/Image/Webp/noFilter" alt="Best Obbys!" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h4 class="text-xl font-bold text-midnight-200 mb-1">Best Obbys!</h4>
+                            <p class="text-midnight-400 font-medium mb-2">917.6K+ Visits | Lead Developer | 7,875 Members</p>
+                            <p class="text-midnight-300 text-sm">2 Player Obbies</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Studio 4 -->
+                    <div class="bg-midnight-700 rounded-lg overflow-hidden flex">
+                        <div class="w-1/3 aspect-square flex items-center justify-center bg-midnight-800">
+                            <img src="https://tr.rbxcdn.com/180DAY-7581fbff27fc1afb1ea0879e1c908070/150/150/Image/Webp/noFilter" alt="Hallowed Ground" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h4 class="text-xl font-bold text-midnight-200 mb-1">Hallowed Ground</h4>
+                            <p class="text-midnight-400 font-medium mb-2">115.2K+ Visits | Contributor | 7,527 Members</p>
+                            <p class="text-midnight-300 text-sm">Known for their UGC</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Commission Guide Section -->
+        <section id="commission" class="section py-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-midnight-200 mb-8 text-center">Commission Guide</h2>
+                <p class="text-midnight-300 mb-12 text-center max-w-2xl mx-auto">Here's how we'll work together to bring your project to life</p>
+                
+                <div class="bg-midnight-800 rounded-xl p-8 shadow-lg">
+                    <div class="space-y-8">
+                        <!-- Workflow Step 1 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-midnight-600 flex items-center justify-center text-midnight-200 font-bold mr-4 mt-1">1</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-midnight-200 mb-2">Initial Contact</h3>
+                                <p class="text-midnight-300">You reach out with the system you need  🧠</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Workflow Step 2 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-midnight-600 flex items-center justify-center text-midnight-200 font-bold mr-4 mt-1">2</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-midnight-200 mb-2">Planning Phase</h3>
+                                <p class="text-midnight-300">I confirm scope + price + timeline  💻</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Workflow Step 3 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-midnight-600 flex items-center justify-center text-midnight-200 font-bold mr-4 mt-1">3</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-midnight-200 mb-2">Development</h3>
+                                <p class="text-midnight-300">I build the system on my end </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Workflow Step 4 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-midnight-600 flex items-center justify-center text-midnight-200 font-bold mr-4 mt-1">4</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-midnight-200 mb-2">Testing</h3>
+                                <p class="text-midnight-300">You test via demo place  ️</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Workflow Step 5 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-midnight-600 flex items-center justify-center text-midnight-200 font-bold mr-4 mt-1">5</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-midnight-200 mb-2">Completion</h3>
+                                <p class="text-midnight-300">You pay and receive final product  💸</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <div class="mt-12 bg-midnight-700 rounded-lg p-6 border-l-4 border-midnight-500">
+                    <h3 class="text-xl font-semibold text-midnight-200 mb-4">Important Notes</h3>
+                    <ul class="text-midnight-300 space-y-2 list-disc pl-5">
+                        <li><span class="font-medium">Task list or document is strongly encouraged</span> - Helps ensure we're aligned on requirements</li>
+                        <li><span class="font-medium">Per-task payment</span> - For projects with multiple systems/tasks</li>
+                        <li>Clear communication and updates at every stage</li>
+                        <li class="text-red-400 font-semibold">⚠️ No refunds after a file has been sent</li>
+                    </ul>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section id="store" class="section py-12">
+            <h2 class="text-3xl font-bold text-midnight-200 mb-8 text-center">My Scripts & Services</h2>
+            <p class="text-midnight-300 mb-12 text-center max-w-2xl mx-auto">Browse through my collection of premium scripts and services. Each product is carefully crafted for performance and reliability.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h3 class="text-2xl font-bold text-midnight-300 text-center col-span-full">Coming Soon!</h3>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section py-12">
+            <h2 class="text-3xl font-bold text-midnight-200 mb-8 text-center">Get In Touch</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-midnight-800 rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="w-full p-8 flex flex-col items-center justify-center">
+                            <h3 class="text-3xl font-semibold text-midnight-200 mb-8">Contact Information</h3>
+                            <p class="text-midnight-300 mb-6 text-center">Have a project in mind or want to discuss potential collaboration? Reach out through any of these channels.</p>
+                            
+                            <div class="flex flex-wrap justify-center gap-8">
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-midnight-400 text-xl mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-midnight-200">Email</h4>
+                                        <p class="text-midnight-400">syilfredev@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fab fa-discord text-midnight-400 text-xl mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-midnight-200">Discord (Click to DM)</h4>
+                                        <a href="https://discord.com/users/1004306737525952572" target="_blank" class="text-midnight-400 hover:text-midnight-300 underline">@coto3p</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fab fa-roblox text-midnight-400 text-xl mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-midnight-200">Roblox (Click to View)</h4>
+                                        <a href="https://www.roblox.com/users/6152191844/profile" target="_blank" class="text-midnight-400 hover:text-midnight-300 underline">syilfre</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Detail Sections -->
+    <section id="project-adventure" class="section py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <a href="#" class="inline-flex items-center text-midnight-400 hover:text-midnight-300 mb-4" data-section="home">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+            <div class="bg-midnight-800 rounded-lg shadow-lg p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl font-bold text-midnight-200">Bigfoot</h2>
+                    <a href="https://www.roblox.com/games/8288889383/" target="_blank" class="bg-midnight-600 hover:bg-midnight-500 text-white px-4 py-2 rounded-lg font-medium">
+                        View on Roblox <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="aspect-w-16 aspect-h-9 mb-6">
+                    <img src="https://tr.rbxcdn.com/180DAY-e0eaa76d4efd48d5c4ce6a1f37b3fcc3/768/432/Image/Webp/noFilter" alt="Bigfoot" class="w-full h-96 rounded-lg object-cover">
+                </div>
+                
+                <div class="prose prose-invert">
+                    <p class="text-midnight-300 mb-4">
+Dive deep into the mysterious forest in Bigfoot, an adventure where the hunt for the legendary Bigfoot becomes a thrilling puzzle. Play as an intrepid hunter, explore wild landscapes, solve puzzles and hunt down the mythical creature. Or, choose to play as bigfoot himself, use your wits to escape the hunters and sow mystery. Play with your friends, explore the forest together, share clues, and find out who will triumph in this captivating quest between hunter and ultimate prey. Are you ready for Bigfoot adventure? The forest has surprises in store!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-ecommerce" class="section py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <a href="#" class="inline-flex items-center text-midnight-400 hover:text-midnight-300 mb-4" data-section="home">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+            <div class="bg-midnight-800 rounded-lg shadow-lg p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl font-bold text-midnight-200">OutWest Chicago</h2>
+                    <a href="https://www.roblox.com/games/18513421044/" target="_blank" class="bg-midnight-600 hover:bg-midnight-500 text-white px-4 py-2 rounded-lg font-medium">
+                        View on Roblox <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="aspect-w-16 aspect-h-9 mb-6">
+                    <img src="https://tr.rbxcdn.com/180DAY-a05eb217c6e3b74952ec1b82a8ea3887/768/432/Image/Webp/noFilter" alt="OutWest Chicago" class="w-full h-96 rounded-lg object-cover">
+                </div>
+                
+                <div class="prose prose-invert">
+                    <p class="text-midnight-300 mb-4">
+                        Private Strict Roleplay Server - Purchase early access to participate in the main roleplay server with many cool features -🚑 EMS System -🚓 Become a police officer -🪑 Apartment/House system with saving furniture -🧑‍🤝‍🧑 Fight for territory against rival factions - ⛓️ Fence hopping - 🏢 Highly detailed job systems - ☀️ Custom made chicago map with top tier graphics
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-social" class="section py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <a href="#" class="inline-flex items-center text-midnight-400 hover:text-midnight-300 mb-4" data-section="home">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+            <div class="bg-midnight-800 rounded-lg shadow-lg p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl font-bold text-midnight-200">Don't Explode!</h2>
+                    <a href="https://www.roblox.com/games/102054368645348/" target="_blank" class="bg-midnight-600 hover:bg-midnight-500 text-white px-4 py-2 rounded-lg font-medium">
+                        View on Roblox <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="aspect-w-16 aspect-h-9 mb-6">
+                    <img src="https://tr.rbxcdn.com/180DAY-533a3cbfd4eccbcd779658564fce4bdc/768/432/Image/Webp/noFilter" alt="Don't Explode!" class="w-full h-96 rounded-lg object-cover">
+                </div>
+                
+                <div class="prose prose-invert">
+                    <p class="text-midnight-300 mb-4">
+                        Welcome to 💥Don't Explode! [2 Player Obby]  ⚠️ Tag along a friend, this game is meant for 2 players!  ⚠️ Navigate through thrilling obstalces with a friend as you both carry a hazardous waste barrel on your exciting journey! Careful though, it may explode on you...  💾 Checkpoints are saved once reached! 💾  Join group for a free Barrel Skin   👾 Feel free to report bugs in the group wall 👾
+                    </p>
+                    <ul class="text-midnight-300 mb-6 list-disc pl-5">
+                        <li>Cooperative gameplay mechanics</li>
+                        <li>Hazardous barrel physics system</li>
+                        <li>Explosion effects and consequences</li>
+                        <li>Challenging obstacle courses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-ai" class="section py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <a href="#" class="inline-flex items-center text-midnight-400 hover:text-midnight-300 mb-4" data-section="home">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+            <div class="bg-midnight-800 rounded-lg shadow-lg p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl font-bold text-midnight-200">Avatar Outfit Ideas</h2>
+                    <a href="https://www.roblox.com/games/89143645065881/" target="_blank" class="bg-midnight-600 hover:bg-midnight-500 text-white px-4 py-2 rounded-lg font-medium">
+                        View on Roblox <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="aspect-w-16 aspect-h-9 mb-6">
+                    <img src="https://tr.rbxcdn.com/180DAY-bfadec15969131a3c1c434f729ab01b8/768/432/Image/Webp/noFilter" alt="Avatar Outfit Ideas" class="w-full h-96 rounded-lg object-cover">
+                </div>
+                
+                <div class="prose prose-invert">
+                    <p class="text-midnight-300 mb-4">
+                        ♱ Explore hundreds of outfit ideas! ♱ Win FREE UGC accessories! ♱ Advertise your own items! ♱ Vibe with your friends!
+                    </p>
+                    <ul class="text-midnight-300 mb-6 list-disc pl-5">
+                        <li>Massive catalog of outfit combinations</li>
+                        <li>Daily UGC giveaways</li>
+                        <li>Creator showcase system</li>
+                        <li>Social hangout spaces</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-midnight-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-code text-midnight-300 text-xl mr-2"></i>
+                        <span class="text-lg font-bold text-midnight-200">SYILFRE</span>
+                    </div>
+                    <p class="text-sm text-midnight-400 mt-1">Creating exceptional Roblox experiences since 2022</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-midnight-400 hover:text-midnight-300" data-section="home">Home</a>
+                    <a href="#" class="text-midnight-400 hover:text-midnight-300" data-section="about">About</a>
+                    <a href="#" class="text-midnight-400 hover:text-midnight-300" data-section="store">Store</a>
+                    <a href="#" class="text-midnight-400 hover:text-midnight-300" data-section="commission">Commission Guide</a>
+                    <a href="#" class="text-midnight-400 hover:text-midnight-300" data-section="contact">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-midnight-700 mt-8 pt-8 text-center text-midnight-500 text-sm">
+                <p>© 2023 Syilfre Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Section navigation
+        document.querySelectorAll('[data-section]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = this.getAttribute('data-section');
+                
+                // Hide all sections
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show target section
+                document.getElementById(targetSection).classList.add('active');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate counter (faster animation)
+        const counter = document.getElementById('counter');
+        const target = 35;
+        const duration = 800; // 0.8 seconds
+        const startTime = Date.now();
+        
+        const animateCounter = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(progress * target);
+            counter.textContent = value;
+            
+            if (progress < 1) {
+                requestAnimationFrame(animateCounter);
+            }
+        };
+        
+        animateCounter();
+    </script>
+</body>
+</html>
